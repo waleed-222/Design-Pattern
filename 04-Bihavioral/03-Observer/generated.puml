@@ -1,0 +1,62 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class FileLogger {
+	+update(float temperature) : void
+}
+
+
+abstract class Observer {
+	+~Observer()
+	+{abstract} update(float temperature) : void
+}
+
+
+class ScreenDisplay {
+	+update(float temperature) : void
+}
+
+
+class WeatherStation {
+	-temperature : float
+	-observers : std::vector<std::shared_ptr<Observer>>
+	+addObserver(std::shared_ptr<Observer> observer) : void
+	+notifyObservers() : void
+	+removeObserver(const std::shared_ptr<Observer>& observer) : void
+	+setTemperature(float temp) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Observer <|-- FileLogger
+
+
+Observer <|-- ScreenDisplay
+
+
+
+
+
+/' Aggregation relationships '/
+
+WeatherStation o-- Observer
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

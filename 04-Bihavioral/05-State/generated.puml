@@ -1,0 +1,73 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class GreenState {
+	+getStateName() : std::string
+	+handle(TrafficLightContext& context) : void
+}
+
+
+class RedState {
+	+getStateName() : std::string
+	+handle(TrafficLightContext& context) : void
+}
+
+
+class TrafficLightContext {
+	+TrafficLightContext(std::unique_ptr<TrafficLightState> initialState)
+	+getCurrentState() : std::string
+	-state : std::unique_ptr<TrafficLightState>
+	+request() : void
+	+setState(std::unique_ptr<TrafficLightState> newState) : void
+}
+
+
+abstract class TrafficLightState {
+	+~TrafficLightState()
+	+{abstract} getStateName() : std::string
+	+{abstract} handle(TrafficLightContext& context) : void
+}
+
+
+class YellowState {
+	+getStateName() : std::string
+	+handle(TrafficLightContext& context) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+TrafficLightState <|-- GreenState
+
+
+TrafficLightState <|-- RedState
+
+
+TrafficLightState <|-- YellowState
+
+
+
+
+
+/' Aggregation relationships '/
+
+TrafficLightContext o-- TrafficLightState
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

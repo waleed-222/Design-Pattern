@@ -1,0 +1,71 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class AddExpression {
+	+AddExpression(std::unique_ptr<Expression> left, std::unique_ptr<Expression> right)
+	+interpret() : int {query}
+	-left : std::unique_ptr<Expression>
+	-right : std::unique_ptr<Expression>
+}
+
+
+abstract class Expression {
+	+~Expression()
+	+{abstract} interpret() : int {query}
+}
+
+
+class NumberExpression {
+	+NumberExpression(int val)
+	+interpret() : int {query}
+	-value : int
+}
+
+
+class SubtractExpression {
+	+SubtractExpression(std::unique_ptr<Expression> left, std::unique_ptr<Expression> right)
+	+interpret() : int {query}
+	-left : std::unique_ptr<Expression>
+	-right : std::unique_ptr<Expression>
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Expression <|-- AddExpression
+
+
+Expression <|-- NumberExpression
+
+
+Expression <|-- SubtractExpression
+
+
+
+
+
+/' Aggregation relationships '/
+
+AddExpression "2" o-- Expression
+
+
+SubtractExpression "2" o-- Expression
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

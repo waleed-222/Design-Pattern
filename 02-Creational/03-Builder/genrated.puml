@@ -1,0 +1,50 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class HttpRequest {
+	+HttpRequest(const std::string& method, const std::string& url, const std::string& headers, const std::string& body)
+	-body : std::string
+	-headers : std::string
+	-method : std::string
+	-url : std::string
+	+send() : void {query}
+}
+
+
+class HttpRequestBuilder {
+	+build() : HttpRequest {query}
+	+setBody(const std::string& body) : HttpRequestBuilder&
+	+setHeaders(const std::string& headers) : HttpRequestBuilder&
+	+setMethod(const std::string& method) : HttpRequestBuilder&
+	+setUrl(const std::string& url) : HttpRequestBuilder&
+	-body : std::string
+	-headers : std::string
+	-method : std::string
+	-url : std::string
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+HttpRequestBuilder o-- HttpRequest
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

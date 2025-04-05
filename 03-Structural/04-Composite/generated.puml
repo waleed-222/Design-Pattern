@@ -1,0 +1,60 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Box {
+	+getPrice() : double {query}
+	-items : std::vector<std::shared_ptr<Item>>
+	+addItem(const std::shared_ptr<Item>& item) : void
+	+printDetails(const std::string& indent) : void {query}
+}
+
+
+abstract class Item {
+	+~Item()
+	+{abstract} getPrice() : double {query}
+	+{abstract} printDetails(const std::string& indent) : void {query}
+}
+
+
+class Product {
+	+Product(const std::string& name, double price)
+	+getPrice() : double {query}
+	-price : double
+	-name : std::string
+	+printDetails(const std::string& indent) : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Item <|-- Box
+
+
+Item <|-- Product
+
+
+
+
+
+/' Aggregation relationships '/
+
+Box o-- Item
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

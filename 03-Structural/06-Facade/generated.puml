@@ -1,0 +1,68 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Amplifier {
+	+off() : void
+	+on() : void
+}
+
+
+class DVDPlayer {
+	+eject() : void
+	+off() : void
+	+on() : void
+	+play(const std::string& movie) : void
+	+stop() : void
+}
+
+
+class HomeTheater {
+	+HomeTheater()
+	-amplifier : std::shared_ptr<Amplifier>
+	-dvdPlayer : std::shared_ptr<DVDPlayer>
+	-projector : std::shared_ptr<Projector>
+	+endMovie() : void
+	+watchMovie(const std::string& movie) : void
+}
+
+
+class Projector {
+	+off() : void
+	+on() : void
+	+setInput(const std::string& source) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+HomeTheater o-- Amplifier
+
+
+HomeTheater o-- DVDPlayer
+
+
+HomeTheater o-- Projector
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

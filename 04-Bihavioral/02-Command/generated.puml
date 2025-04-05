@@ -1,0 +1,78 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+abstract class Command {
+	+~Command()
+	+{abstract} execute() : void
+	+{abstract} undo() : void
+}
+
+
+class Light {
+	+turnOff() : void
+	+turnOn() : void
+}
+
+
+class LightOffCommand {
+	+LightOffCommand(Light& l)
+	-light : Light
+	+execute() : void
+	+undo() : void
+}
+
+
+class LightOnCommand {
+	+LightOnCommand(Light& l)
+	-light : Light
+	+execute() : void
+	+undo() : void
+}
+
+
+class Switch {
+	-history : std::vector<Command*>
+	+executeCommand(Command* cmd) : void
+	+undoLastCommand() : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Command <|-- LightOffCommand
+
+
+Command <|-- LightOnCommand
+
+
+
+
+
+/' Aggregation relationships '/
+
+LightOffCommand *-- Light
+
+
+LightOnCommand *-- Light
+
+
+Switch o-- Command
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

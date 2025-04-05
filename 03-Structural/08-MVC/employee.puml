@@ -1,0 +1,38 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Employee {
+	+Employee(const std::string& name, int size)
+	-age : int
+	+getAge() : int {query}
+	+getName() : std::string {query}
+	-name : std::string
+	+setAge(int newAge) : void
+	+setName(const std::string& newName) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

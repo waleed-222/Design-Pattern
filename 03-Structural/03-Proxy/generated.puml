@@ -1,0 +1,55 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Proxy {
+	+Proxy(std::shared_ptr<Service> realService)
+	-checkAccess() : bool {query}
+	-service : std::shared_ptr<Service>
+	+operation() : void {query}
+}
+
+
+abstract class Serverinterface {
+	+~Serverinterface()
+	+{abstract} operation() : void {query}
+}
+
+
+class Service {
+	+operation() : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Serverinterface <|-- Proxy
+
+
+Serverinterface <|-- Service
+
+
+
+
+
+/' Aggregation relationships '/
+
+Proxy o-- Service
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

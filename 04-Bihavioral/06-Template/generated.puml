@@ -1,0 +1,55 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class CreditCardPayment {
+	+process(double amount) : void
+	+validate() : void
+}
+
+
+class PayPalPayment {
+	+process(double amount) : void
+	+validate() : void
+}
+
+
+abstract class PaymentProcessor {
+	+~PaymentProcessor()
+	+complete() : void
+	+{abstract} process(double amount) : void
+	+processPayment(double amount) : void
+	+sendReceipt() : void
+	+{abstract} validate() : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+PaymentProcessor <|-- CreditCardPayment
+
+
+PaymentProcessor <|-- PayPalPayment
+
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

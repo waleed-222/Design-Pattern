@@ -1,0 +1,37 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class EmployeeController {
+	+EmployeeController(const Employee& emp, const EmployeeView& view)
+	-model : Employee
+	-view : EmployeeView
+	+setEmployeeAge(int age) : void
+	+setEmployeeName(const std::string& name) : void
+	+updateView() : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

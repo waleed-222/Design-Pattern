@@ -1,0 +1,62 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+abstract class IterableCollction {
+	+~IterableCollction()
+	+{abstract} createIterator() : std::unique_ptr<Iterator>
+}
+
+
+abstract class Iterator {
+	+~Iterator()
+	+{abstract} hasNext() : bool
+	+{abstract} next() : int
+}
+
+
+class NumberCollection {
+	+createIterator() : std::unique_ptr<Iterator>
+	-numbers : std::vector<int>
+	+addNumber(int num) : void
+}
+
+
+class NumberIterator {
+	+NumberIterator(std::vector<int> numbers)
+	+hasNext() : bool
+	+next() : int
+	-index : size_t
+	-collection : std::vector<int>
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+IterableCollction <|-- NumberCollection
+
+
+Iterator <|-- NumberIterator
+
+
+
+
+
+/' Aggregation relationships '/
+
+IterableCollction ..> Iterator
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

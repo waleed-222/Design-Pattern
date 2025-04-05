@@ -1,0 +1,35 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Person {
+	+Person(const std::string& name, int age)
+	+~Person()
+	-pImpl : std::unique_ptr<PersonImpl>
+	+introduce() : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

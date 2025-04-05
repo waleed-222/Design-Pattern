@@ -1,0 +1,46 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Car {
+	+Car(const std::string& brand, const std::string& model, const std::string& engineType)
+	-brand : std::string
+	-engineType : std::string
+	-model : std::string
+	+displayCarDetails(const std::string& color, const std::string& registerationNumber) : void
+}
+
+
+class CarFactory {
+	+getCar(const std::string& brand, const std::string& model, const std::string& engineType) : std::shared_ptr<Car>
+	-getKey(const std::string& brand, const std::string& model, const std::string& engineType) : std::string
+	-carpool : std::unordered_map<std::string, std::shared_ptr<Car>>
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+CarFactory o-- Car
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

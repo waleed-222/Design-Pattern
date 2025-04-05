@@ -1,0 +1,75 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+abstract class Employee {
+	+~Employee()
+	+{abstract} accept(EmployeeVistor* vistor) : void
+}
+
+
+abstract class EmployeeVistor {
+	+~EmployeeVistor()
+	+{abstract} visit(Engineer* engineer) : void
+	+{abstract} visit(Manager* manager) : void
+}
+
+
+class Engineer {
+	+accept(EmployeeVistor* vistor) : void
+}
+
+
+class Manager {
+	+accept(EmployeeVistor* vistor) : void
+}
+
+
+class PerformanceEvaluator {
+	+visit(Engineer* engineer) : void
+	+visit(Manager* manager) : void
+}
+
+
+class SalaryCalculator {
+	+visit(Engineer* engineer) : void
+	+visit(Manager* manager) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Employee <|-- Engineer
+
+
+Employee <|-- Manager
+
+
+EmployeeVistor <|-- PerformanceEvaluator
+
+
+EmployeeVistor <|-- SalaryCalculator
+
+
+
+
+
+/' Aggregation relationships '/
+Manager -- EmployeeVistor
+Engineer -- EmployeeVistor
+/' Composition relationships '/
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

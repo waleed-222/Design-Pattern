@@ -1,0 +1,60 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+abstract class ChatMediator {
+	+~ChatMediator()
+	+{abstract} addUser(std::shared_ptr<User> user) : void
+	+{abstract} sendMessage(const std::string& message, User* sender) : void
+}
+
+
+class ChatRoom {
+	-users : std::vector<std::shared_ptr<User>>
+	+addUser(std::shared_ptr<User> user) : void
+	+sendMessage(const std::string& message, User* sender) : void
+}
+
+
+class User {
+	+User(const std::string& name, ChatMediator* mediator)
+	#chatRoom : ChatMediator*
+	+getName() : std::string {query}
+	#name : std::string
+	+receive(const std::string& message, const std::string& senderName) : void
+	+send(const std::string& message) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+ChatMediator <|-- ChatRoom
+
+
+
+
+
+/' Aggregation relationships '/
+
+ChatRoom o-- User
+
+
+User o-- ChatMediator
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

@@ -1,0 +1,78 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class BlueColor {
+	+applyColor() : std::string {query}
+}
+
+
+class Circle {
+	+Circle(std::shared_ptr<Color> color)
+	+draw() : void {query}
+}
+
+
+abstract class Color {
+	+~Color()
+	+{abstract} applyColor() : std::string {query}
+}
+
+
+class RedColor {
+	+applyColor() : std::string {query}
+}
+
+
+abstract class Shape {
+	+Shape(std::shared_ptr<Color> color)
+	+~Shape()
+	#color : std::shared_ptr<Color>
+	+{abstract} draw() : void {query}
+}
+
+
+class Square {
+	+Square(std::shared_ptr<Color> color)
+	+draw() : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Color <|-- BlueColor
+
+
+Color <|-- RedColor
+
+
+Shape <|-- Circle
+
+
+Shape <|-- Square
+
+
+
+
+
+/' Aggregation relationships '/
+
+Shape o-- Color
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

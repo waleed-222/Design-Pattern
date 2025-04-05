@@ -1,0 +1,58 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Circle {
+	+Circle(const std::string& color, int size)
+	-size : int
+	-color : std::string
+	+clone() : std::unique_ptr<Shape> {query}
+	+draw() : void {query}
+}
+
+
+abstract class Shape {
+	+~Shape()
+	+{abstract} clone() : std::unique_ptr<Shape> {query}
+	+{abstract} draw() : void {query}
+}
+
+
+class Square {
+	+Square(const std::string& color, int size)
+	-size : int
+	-color : std::string
+	+clone() : std::unique_ptr<Shape> {query}
+	+draw() : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Shape <|-- Circle
+
+
+Shape <|-- Square
+
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

@@ -1,0 +1,72 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+abstract class Button {
+	+~Button()
+	+{abstract} render() : void {query}
+}
+
+
+abstract class Dialog {
+	+~Dialog()
+	+{abstract} createButton() : std::unique_ptr<Button> {query}
+	+render() : void {query}
+}
+
+
+class MacOSButton {
+	+render() : void {query}
+}
+
+
+class MacOSDialog {
+	+createButton() : std::unique_ptr<Button> {query}
+}
+
+
+class WindowDialog {
+	+createButton() : std::unique_ptr<Button> {query}
+}
+
+
+class WindowsButton {
+	+render() : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Button <|-- MacOSButton
+
+
+Button <|-- WindowsButton
+
+
+Dialog <|-- MacOSDialog
+
+
+Dialog <|-- WindowDialog
+
+
+
+
+
+/' Aggregation relationships '/
+Button o-- Dialog
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

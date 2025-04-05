@@ -1,0 +1,75 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+abstract class Coffee {
+	+~Coffee()
+	+{abstract} getCost() : double {query}
+	+{abstract} getDescription() : std::string {query}
+}
+
+
+abstract class CoffeeDecorator {
+	+CoffeeDecorator(const Coffee& coffee)
+	#wrapperCoffee : const Coffee&
+}
+
+
+class Milk {
+	+Milk(const Coffee& coffee)
+	+getCost() : double {query}
+	+getDescription() : std::string {query}
+}
+
+
+class SimpleCoffee {
+	-getCost() : double {query}
+	-getDescription() : std::string {query}
+}
+
+
+class Sugar {
+	+Sugar(const Coffee& coffee)
+	+getCost() : double {query}
+	+getDescription() : std::string {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Coffee <|-- CoffeeDecorator
+
+
+Coffee <|-- SimpleCoffee
+
+
+CoffeeDecorator <|-- Milk
+
+
+CoffeeDecorator <|-- Sugar
+
+
+
+
+
+/' Aggregation relationships '/
+
+CoffeeDecorator *-- Coffee
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

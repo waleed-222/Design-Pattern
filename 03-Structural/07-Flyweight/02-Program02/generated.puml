@@ -1,0 +1,72 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Character {
+	+Character(char value, int x, int y, std::shared_ptr<Font> font)
+	-value : char
+	-x : int
+	-y : int
+	-font : std::shared_ptr<Font>
+	+display() : void {query}
+}
+
+
+class Document {
+	-fontFactory : FontFactory
+	-characters : std::vector<Character>
+	+addCharacter(char value, int x, int y, const std::string& fontName, const std::string& fontStyle, int fontSize) : void
+	+display() : void
+}
+
+
+class Font {
+	+Font(const std::string& fontName, const std::string& fontStyle, int fontSize)
+	-fontSize : int
+	-fontName : std::string
+	-fontStyle : std::string
+	+display(const std::string& character, int x, int y) : void
+}
+
+
+class FontFactory {
+	+getFonts(const std::string& name, const std::string& style, int size) : std::shared_ptr<Font>
+	-fonts : std::unordered_map<std::string, std::shared_ptr<Font>>
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+Character o-- Font
+
+
+Document *-- Character
+
+
+Document *-- FontFactory
+
+
+FontFactory o-- Font
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

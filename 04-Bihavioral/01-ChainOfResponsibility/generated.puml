@@ -1,0 +1,62 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class BillingSupport {
+	+handleRequest(const std::string& issue) : void
+}
+
+
+class CustomerService {
+	+handleRequest(const std::string& issue) : void
+}
+
+
+class Handler {
+	+~Handler()
+	#nextHandler : std::shared_ptr<Handler>
+	+handleRequest(const std::string& issue) : void
+	+setNext(std::shared_ptr<Handler> next) : void
+}
+
+
+class TechnicalService {
+	+handleRequest(const std::string& issue) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Handler <|-- BillingSupport
+
+
+Handler <|-- CustomerService
+
+
+Handler <|-- TechnicalService
+
+
+
+
+
+/' Aggregation relationships '/
+
+Handler o-- Handler
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

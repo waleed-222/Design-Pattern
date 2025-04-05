@@ -1,0 +1,53 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class History {
+	+undo() : Memento
+	-snapshots : std::vector<Memento>
+	+save(const Memento& memento) : void
+}
+
+
+class Memento {
+	+Memento(std::string state)
+	+getState() : std::string {query}
+	-state : std::string
+}
+
+
+class TextEditor {
+	+save() : Memento {query}
+	-text : std::string
+	+restore(const Memento& memento) : void
+	+showText() : void {query}
+	+write(const std::string& newText) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+History *-- Memento
+TextEditor->Memento
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

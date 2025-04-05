@@ -1,0 +1,67 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class BitCoinPayment {
+	+pay(double amount) : void
+}
+
+
+class CreditCardPayment {
+	+pay(double amount) : void
+}
+
+
+class PayPalPayment {
+	+pay(double amount) : void
+}
+
+
+class PaymentProcessor {
+	-strategy : std::shared_ptr<PaymentStrategy>
+	+processorPayment(double amount) : void
+	+setStrategy(std::shared_ptr<PaymentStrategy> newStrategy) : void
+}
+
+
+abstract class PaymentStrategy {
+	+~PaymentStrategy()
+	+{abstract} pay(double amount) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+PaymentStrategy <|-- BitCoinPayment
+
+
+PaymentStrategy <|-- CreditCardPayment
+
+
+PaymentStrategy <|-- PayPalPayment
+
+
+
+
+
+/' Aggregation relationships '/
+
+PaymentProcessor o-- PaymentStrategy
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class EmployeeView {
+	+displaEmployee(const std::string& name, int size) : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

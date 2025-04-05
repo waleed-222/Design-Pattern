@@ -1,0 +1,32 @@
+@startuml
+
+!include employee.puml
+!include employeeview.puml
+!include employeecontroller.puml
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+
+
+/' Aggregation relationships '/
+
+EmployeeController o-- Employee
+EmployeeController o-- EmployeeView
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+
+@enduml

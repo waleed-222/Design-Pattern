@@ -1,0 +1,36 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Singleton {
+	-Singleton()
+	+{static} get_instance() : Singleton&
+	-database : std::vector<int>
+	+pushData(int data) : void
+	+showMessage() : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

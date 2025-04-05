@@ -1,0 +1,51 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Adapter {
+	+Adapter(NewSystem* system)
+	-newsystem : NewSystem*
+	+OldOperation() : void
+}
+
+
+class NewSystem {
+	+newOperation() : void
+}
+
+
+class OldSystem {
+	+~OldSystem()
+	+OldOperation() : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+OldSystem <|-- Adapter
+
+
+
+
+
+/' Aggregation relationships '/
+
+Adapter o-- NewSystem
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml
