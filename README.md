@@ -63,6 +63,7 @@ The repository is divided into four main categories:
 
 I have created a C++ Design Patterns repository covering all major patterns with UML diagrams and code examples! 🚀
 Check it out and let me know your thoughts! 
+https://www.linkedin.com/posts/waleed-ebrahem-46624a1b2_cpp-designpatterns-programming-activity-7314293850594848769-yMhR?utm_source=share&utm_medium=member_desktop&rcm=ACoAADGDgg4BYvv4VfI2y7hoaIYWK1CZDaNLBJI
 
 
 
